@@ -1,0 +1,33 @@
+---
+description: Solo project docs and docs sync rules
+alwaysApply: false
+globs: docs/**,**/*.md
+---
+
+Project facts belong in project-local docs, not upstream templates:
+
+- `docs/USER_GUIDE.md`
+- `docs/PRODUCT.md`
+- `docs/ARCHITECTURE.md`
+- `docs/CODING_GUIDE.md`
+- `docs/TASKS.md`
+- `docs/TASK_TEMPLATE.md`
+- `docs/QUICK_TASK_TEMPLATE.md`
+- `docs/tasks/T00x-*.md`
+
+Project architecture facts belong in `docs/ARCHITECTURE.md`. Coding standards and stack practices belong in `docs/CODING_GUIDE.md`. Solo task state belongs in `docs/TASKS.md` and `docs/tasks/`. Task IDs use `T001`, `T002`, … with files `docs/tasks/T001-short-name.md`. If `docs/TASKS.md` and a task doc disagree, trust the task doc and update `docs/TASKS.md`.
+
+Do not infer project facts from upstream templates, copy root project state into templates, or treat template placeholders as facts.
+
+`sync docs` has two jobs:
+
+1. Replace init placeholders with inspected project facts.
+2. Keep project-local docs accurate against inspected project contents.
+
+`sync docs` and docs-only changes are direct updates when the request is clear. Do not require a proposal, verification step, or acceptance step. Finish by listing every changed document with a brief note.
+
+After `protocol:init`, replace placeholder seed content with correct project-specific content. If any `TODO(ai-docs-sync)` notice or `{{PLACEHOLDER_NAME}}` placeholder is present, tell the user placeholders remain, do not treat placeholders as project facts, and replace them from inspected evidence.
+
+When code changes affect APIs, commands, events, data schema, settings, user-visible behavior, coding standards, dependencies, stack practices, or top-level modules, sync the relevant project-local docs in the same change or explain why no docs sync is needed. Preserve paths, commands, code blocks, task IDs, status tokens, placeholder semantics, and technical names.
+
+Upstream core and init seed templates stay English. Target-project docs follow `.protocol/protocol.json` language after localization, including `docs/TASK_TEMPLATE.md`, `docs/QUICK_TASK_TEMPLATE.md`, and `docs/CODING_GUIDE.md`. Do not rewrite historical task records under `docs/tasks/` only for localization unless they are otherwise being updated. For encoding and newline policy, read upstream `../shared/rule_docs/ENCODING.md` on demand.
