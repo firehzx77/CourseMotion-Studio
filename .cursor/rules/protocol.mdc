@@ -1,0 +1,16 @@
+---
+description: Solo protocol pointer for Cursor
+alwaysApply: true
+---
+
+This project uses the upstream `agent-project-protocol` **solo** package through `.protocol/protocol.json`.
+
+Mount this project root as the workspace before doing any work. Project facts, task state, task docs, overrides, and code live here—not in the upstream protocol package alone.
+
+Read `AGENTS.md` first, then `.protocol/protocol.json` and the upstream/core rules it references. Classify every request first, then start the response by stating the router type and a brief natural-language explanation in the project language defined by `.protocol/protocol.json`. If `language` is omitted, default to English.
+
+Use `.protocol/protocol.json` `language` as the default response language. If it is omitted, default to `en`. The current user message may override the language for that turn.
+
+Before the final response for `lightweight_change` or `bug_fix`, complete the workflow's quick task record or explicitly state why the routed workflow is exempt such as `docs_sync` or a read-only answer.
+
+Rule precedence when rules conflict: `.protocol/PROTOCOL_OVERRIDES.md` > project `.cursor/rules/*.mdc` > upstream `ruleFiles` > `AGENTS.md` defaults.

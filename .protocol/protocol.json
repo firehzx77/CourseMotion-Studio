@@ -1,0 +1,22 @@
+{
+  "extends": "C:/Users/leo Huang/agent-project-protocol/templates/solo",
+  "packageName": "agent-project-protocol-solo",
+  "packageVersion": "0.1.0",
+  "level": "solo",
+  "language": "zh-CN",
+  "overrides": [
+    ".protocol/PROTOCOL_OVERRIDES.md"
+  ],
+  "ruleFiles": [
+    "../shared/primitive-command.md",
+    "../shared/composed-workflow.md",
+    "../shared/level-gate.md",
+    "router-policy.md",
+    "workflow-map.md",
+    "../shared/rule_docs/README.md"
+  ],
+  "cursorRuleFiles": [
+    ".cursor/rules/protocol.mdc",
+    ".cursor/rules/docs.mdc"
+  ]
+}
